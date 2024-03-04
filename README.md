@@ -1,10 +1,15 @@
 # EXPERIMENT-NO--03-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resistor
 
-# DATE :
-# NAME :
-# ROLLNUMBER :
-# DEPARTMENT
+# DATE : 04-03-2024
+
+# NAME : Suriya Pravin M
+
+# ROLLNUMBER : 212223230223
+
+# DEPARTMENT : AI & DS
+
 ## AIM: 
+
 To interface an FSR(force sensitive resistor) and scale the output voltage obtained to pressure applied 
  
 ### COMPONENTS REQUIRED:
@@ -16,6 +21,7 @@ To interface an FSR(force sensitive resistor) and scale the output voltage obtai
 
 
 ### THEORY: 
+
 FSRs are basically a resistor that changes its resistive value (in ohms Ω) depending on how much it is pressed. These sensors are fairly low cost, and easy to use. They also vary some from sensor to sensor perhaps 10%. FSR's resistance changes as more pressure is applied. When there is no pressure, the sensor looks like an infinite resistor (open circuit), as the pressure increases, the resistance goes down. This graph indicates approximately the resistance of the sensor at different force measurements.
  
 
@@ -79,26 +85,56 @@ The easiest way to measure a resistive sensor is to connect one end to power and
 
 
 ### PROGRAM 
- *your roll no 
- * your name 
- * department and year 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+int LED=7;
 
-![image](https://user-images.githubusercontent.com/36288975/188804653-a3154e8e-2655-46f2-9dcd-f425dd1ba109.png)
+int FSR;
+
+void setup()
+
+{
+
+  pinMode(LED, OUTPUT);
+  
+  Serial.begin(9600);
+
+}
+
+void loop()
+
+{
+  
+  FSR=analogRead(A0);
+  
+  Serial.print("Raw Value: ");
+  
+  Serial.println(FSR);
+  
+  delay(500);
+  
+  int m;
+  
+  m=map(FSR,0,159,0,10);
+  
+  Serial.print("Mapped value: ");
+  
+  Serial.println(m);
+  
+  if(FSR>50)
+  {
+    digitalWrite(LED, HIGH);
+    
+    delay(500); 
+    
+    digitalWrite(LED, LOW);
+    
+    delay(500);
+  }
+  
+}
+
+![Table3](https://github.com/vasanthkumarch/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/161364099/23f5038f-6ac9-4cbd-bf4e-09a77286c0a1)
+
+![Chart3 ](https://github.com/vasanthkumarch/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/161364099/4638fd3b-fa93-47ad-a44f-6531c88f0c11)
 
 
 ### TABLE -02 standard deviation table 
@@ -114,10 +150,22 @@ N is the total number of values
 
 For those unfamiliar with summation notation, the equation above may seem daunting, but when addressed through its individual components, this summation is not particularly complicated. The i=1 in the summation indicates the starting index, i.e. for the data set 1, 3, 4, 7, 8, i=1 would be 1, i=2 would be 3, and so on. Hence the summation notation simply means to perform the operation of (xi - μ)2 on each value through N, which in this case is 5 since there are 5 values in this data set.
 
-EX:           μ = (1+3+4+7+8) / 5 = 4.6        
+EX:           
+
+μ = (1+3+4+7+8) / 5 = 4.6  
+
 σ = √[(1 - 4.6)2 + (3 - 4.6)2 + ... + (8 - 4.6)2)]/5
+
 σ = √(12.96 + 2.56 + 0.36 + 5.76 + 11.56)/5 = 2.577
 
+###Output:
+
+![circuit](https://github.com/vasanthkumarch/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/161364099/dbe36a20-dbc3-4703-8bc8-11f1075893c7)
+
+
+
+
+![cypng](https://github.com/vasanthkumarch/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/161364099/ab84f43b-e55b-453f-bd4b-cafa7f52a5a8)
 
 
 
@@ -128,8 +176,6 @@ EX:           μ = (1+3+4+7+8) / 5 = 4.6
 
 
 
+### RESULTS : 
 
-
-
-
-### RESULTS : Arduino uno is interfaced with FSR and output values are indicated on a graph.
+Arduino uno is interfaced with FSR and output values are indicated on a graph.
